@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App1() {
+    const [user, setUser] = useState({ name: '', password: '' });
+    const [validate, setValidate] = useState(false);
+    const [accessGranted, setAccessGranted] = useState(false);
+
+    useEffect(() => {
+        if (validate && user.name === 'john' && user.password === 'john123') {
+            setAccessGranted(true);
+        } else {
+            setAccessGranted(false);
+        }
+    }, [validate, user]);
+
+    const checkValid = () => {
+        setValidate(true);
+    };
+
+    return (
+        <>
+            <h1>Login</h1>
+            <form>
+                <p>
+                    <input
+                        type="text"
+                        value={user.name}
+                        onChange={(e) => setUser({ ...user, name: e.target.value })}
+                        placeholder="Enter name"
+                    />
+                </p>
+                <p>
+                    <input
+                        type="password"
+                        value={user.password}
+                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                        placeholder="Enter password"
+                    />
+                </p>
+                <button type="button" onClick={checkValid}>Submit</button>
+            </form>
+            {validate && (
+                <p style={{ color: accessGranted ? 'green' : 'red' }}>
+                    {accessGranted ? 'Access Granted' : 'Access Denied'}
+                </p>
+            )}
+        </>
+    );
 }
-
-export default App;
