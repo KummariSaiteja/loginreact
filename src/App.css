@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,21 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.login-container{
+  background-image:url('bg-image.jpg') ;
+  background-size: cover;
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items:center ;
+}
+.login-card{
+  background:transparent ;
+  border:5px solid black;
+  backdrop-filter:blur(20px);
+  border-radius:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 export default function App1() {
     const [user, setUser] = useState({ name: '', password: '' });
@@ -19,6 +20,8 @@ export default function App1() {
 
     return (
         <>
+        <div className="login-container">
+            <div classsName="login-card">
             <h1>Login</h1>
             <form>
                 <p>
@@ -44,6 +47,8 @@ export default function App1() {
                     {accessGranted ? 'Access Granted' : 'Access Denied'}
                 </p>
             )}
+            </div>
+        </div>
         </>
     );
 }
